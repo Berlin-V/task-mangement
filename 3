@@ -1,0 +1,46 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+	 task: any=[];
+
+	addTask (data:any) {
+	
+			this.task.forEach((t) => {
+		     if(data.title && data.subtitle)
+		     //if there is no title and subtitle the data will not come into the the array
+                    {
+		    if (t.title === t.title ) {
+    		    throw new Error ('Title already exit')
+		    }
+		    else{
+			    this.task.push(data);
+			    return this.task
+		    }
+		    }
+                     else
+                    {
+                    throw new Error("required perameters are missing")
+                     }		
+			})
+			
+	}
+
+	 getAllTask(){
+	 const data=this.task;
+         return data;
+	 }
+
+	 getTask(data:any){
+		 return  this.task.filter(v => v.id);
+	 }
+	
+	 deleteTask(data:any) {
+	const task=this.task;
+        const no=data.id;
+        const idIndex=task.map(v => v.no).indexOf(no);
+	const remove = task.splice(idIndex,1);
+       return('You are fired')	
+	 }
+	}
+	 
